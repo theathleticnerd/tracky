@@ -1,18 +1,24 @@
 // @ts-nocheck
 import WorkoutSetCard from "@/components/Workout/WorkoutSetCard";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { Pressable, Text, View } from "react-native";
+import { WorkoutContext } from "./WorkoutContext";
 import WorkoutExerciseModal from "./WorkoutExerciseModal";
 
 export default function WorkoutExerciseCard(props) {
   const { id, name, description, sets } = props.exercise;
   const exerciseIndex = props.index;
+  const workout = useContext(WorkoutContext);
 
   const [modalVisible, setModalVisible] = useState(false);
   const toggleModal = useCallback(() => {
     setModalVisible((prev) => !prev);
   }, []);
+
+  const addSet = () => {
+    workout.addSet(exerciseIndex);
+  };
 
   return (
     <View className="bg-gray-200/10 py-6 mb-12 px-2 rounded-lg w-full">
@@ -22,7 +28,7 @@ export default function WorkoutExerciseCard(props) {
           <Text className="text-white mt-1 text-lg">{description}</Text>
         </View>
         <Pressable className="" onPress={toggleModal}>
-          <Ionicons name="pencil" size={24} color="#f2f2f2" />
+          <Ionicons name="ellipsis-vertical" size={24} color="#f2f2f2" />
         </Pressable>
       </View>
       <View className="items-center justify-center">
@@ -43,7 +49,7 @@ export default function WorkoutExerciseCard(props) {
             ✓
           </Text>
         </View>
-        <View className="">
+        <View className="gap-12 mb-4">
           {sets.map((data, index) => (
             <WorkoutSetCard
               key={data.id}
@@ -53,6 +59,16 @@ export default function WorkoutExerciseCard(props) {
             />
           ))}
         </View>
+        {/* <Pressable
+          className="self-start flex-row items-center bg-gray-950 py-4 px-4 rounded-lg border border-neutral-800 w-1/3"
+          onPress={addSet}
+        >
+          <Ionicons name="add-circle" size={24} color="#f2f2f2" />
+          <Text className="text-xl text-white ml-4 flex-1">Add Set</Text>
+        </Pressable> */}
+        <Pressable className="self-start mx-2" onPress={addSet}>
+          <Ionicons name="add-circle" size={32} color="#f2f2f2" />
+        </Pressable>
       </View>
       <WorkoutExerciseModal
         name={name}

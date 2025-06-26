@@ -50,7 +50,7 @@ export default function WorkoutSetCard(props: any) {
   };
 
   return (
-    <View className="flex-row items-center justify-between w-full gap-2 space-between mb-12">
+    <View className="flex-row items-center justify-between w-full gap-2 space-between">
       <Text className="text-gray-200 font-bold text-center w-1/12 ">
         {index + 1}
       </Text>
