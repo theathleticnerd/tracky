@@ -1,75 +1,217 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+// @ts-nocheck
+import "@/global.css";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import Snackbar from "@/components/Snackbar";
+import { WorkoutContext } from "@/components/Workout/WorkoutContext";
+import WorkoutExerciseCard from "@/components/Workout/WorkoutExerciseCard";
+import { useCallback, useEffect, useState } from "react";
+import { Platform, SafeAreaView, ScrollView, Text } from "react-native";
+const data = [
+  {
+    id: 1,
+    name: "Lateral Raise",
+    description: "Targets the lateral deltoids for width and definition.",
+    sets: [
+      {
+        id: 1,
+        bestLift: null,
+        weight: "2.5",
+        reps: "12",
+        isDone: false,
+      },
+      {
+        id: 2,
+        bestLift: null,
+        weight: "5",
+        reps: "10",
+        isDone: false,
+      },
+      {
+        id: 3,
+        bestLift: null,
+        weight: "5",
+        reps: "8",
+        isDone: false,
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Overhead Dumbbell Press",
+    description: "Works the front and side delts along with triceps.",
+    sets: [
+      {
+        id: 1,
+        bestLift: null,
+        weight: "10",
+        reps: "12",
+        isDone: false,
+      },
+      {
+        id: 2,
+        bestLift: null,
+        weight: "12.5",
+        reps: "10",
+        isDone: false,
+      },
+      {
+        id: 3,
+        bestLift: null,
+        weight: "15",
+        reps: "8",
+        isDone: false,
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Front Raise",
+    description: "Isolates the anterior deltoids.",
+    sets: [
+      {
+        id: 1,
+        bestLift: null,
+        weight: "5",
+        reps: "12",
+        isDone: false,
+      },
+      {
+        id: 2,
+        bestLift: null,
+        weight: "7.5",
+        reps: "10",
+        isDone: false,
+      },
+      {
+        id: 3,
+        bestLift: null,
+        weight: "10",
+        reps: "8",
+        isDone: false,
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "Reverse Pec Deck Fly",
+    description: "Targets the rear delts and upper back.",
+    sets: [
+      {
+        id: 1,
+        bestLift: null,
+        weight: "20",
+        reps: "15",
+        isDone: false,
+      },
+      {
+        id: 2,
+        bestLift: null,
+        weight: "25",
+        reps: "12",
+        isDone: false,
+      },
+      {
+        id: 3,
+        bestLift: null,
+        weight: "30",
+        reps: "10",
+        isDone: false,
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "Arnold Press",
+    description:
+      "A dynamic pressing movement that hits all three heads of the deltoid.",
+    sets: [
+      {
+        id: 1,
+        bestLift: null,
+        weight: "10",
+        reps: "10",
+        isDone: false,
+      },
+      {
+        id: 2,
+        bestLift: null,
+        weight: "12.5",
+        reps: "8",
+        isDone: false,
+      },
+      {
+        id: 3,
+        bestLift: null,
+        weight: "15",
+        reps: "6",
+        isDone: false,
+      },
+    ],
+  },
+];
 
 export default function HomeScreen() {
+  const [workoutData, setWorkoutData] = useState([]);
+  const [sidebarData, setSidebarData] = useState({ type: null, message: "" });
+  useEffect(() => {
+    setWorkoutData(data);
+  }, []);
+
+  const changeSetData = useCallback((exerciseIndex, setNumber, obj) => {
+    setWorkoutData((prev) => {
+      const data = [...prev];
+      const oldValue = data[exerciseIndex].sets[setNumber];
+      data[exerciseIndex].sets[setNumber] = {
+        ...oldValue,
+        ...obj,
+        isDone: !oldValue.isDone,
+      };
+      return data;
+    });
+  }, []);
+  const changeExerciseData = useCallback((exerciseIndex, obj) => {
+    setWorkoutData((prev) => {
+      const data = [...prev];
+      const oldValue = data[exerciseIndex];
+      data[exerciseIndex] = {
+        ...oldValue,
+        ...obj,
+      };
+      return data;
+    });
+  }, []);
+  const showSidebar = (type, message) => {
+    setSidebarData({ type: type, message: message });
+    setTimeout(() => {
+      setSidebarData({ type: null, message: null });
+    }, 2000);
+  };
+
+  const contextValue = { changeSetData, changeExerciseData, showSidebar };
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView
+      style={{
+        paddingTop: Platform.OS === "android" ? 20 : 0,
+      }}
+      className="flex-1 px-5 min-w-full"
+    >
+      <ScrollView className="pt-4">
+        <Text className="text-white text-4xl mt-5 mb-10">Shoulders</Text>
+
+        <WorkoutContext value={contextValue}>
+          {/* Exercise Card View */}
+          {workoutData.map((exercise, index) => (
+            <WorkoutExerciseCard
+              key={exercise.id}
+              index={index}
+              exercise={exercise}
+            />
+          ))}
+        </WorkoutContext>
+      </ScrollView>
+      {sidebarData.type && (
+        <Snackbar type={sidebarData.type} message={sidebarData.message} />
+      )}
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
