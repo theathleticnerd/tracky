@@ -45,12 +45,12 @@ export default function WorkoutSetCard(props: any) {
         reps: repsUI,
         weight: weightUI,
       };
-      workout.changeSetData(exerciseIndex, index, obj); // console.log(index, exerciseIndex, obj);
+      workout.changeSetData(exerciseIndex, index, obj);
     }
   };
 
   return (
-    <View className="flex-row items-center justify-between w-full gap-2 space-between px-2">
+    <View className="flex-row items-center justify-between w-full gap-2 space-between">
       <Text className="text-gray-200 font-bold text-center w-1/12 ">
         {index + 1}
       </Text>

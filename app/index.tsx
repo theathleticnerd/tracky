@@ -196,14 +196,12 @@ export default function HomeScreen() {
     });
   };
   const deleteSet = (exerciseIndex, setIndex) => {
-    // console.log(exerciseIndex, setIndex);
     setWorkoutData((prev) => {
       const previousData = [...prev];
       let sets = previousData[exerciseIndex].sets;
       sets = sets.splice(setIndex, 1);
       return previousData;
     });
-    console.log(workoutData[exerciseIndex].sets);
   };
 
   const showSidebar = (type, message) => {
