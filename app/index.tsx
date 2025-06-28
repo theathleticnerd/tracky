@@ -195,6 +195,16 @@ export default function HomeScreen() {
       return previousData;
     });
   };
+  const deleteSet = (exerciseIndex, setIndex) => {
+    // console.log(exerciseIndex, setIndex);
+    setWorkoutData((prev) => {
+      const previousData = [...prev];
+      let sets = previousData[exerciseIndex].sets;
+      sets = sets.splice(setIndex, 1);
+      return previousData;
+    });
+    console.log(workoutData[exerciseIndex].sets);
+  };
 
   const showSidebar = (type, message) => {
     setSidebarData({ type: type, message: message });
@@ -208,6 +218,7 @@ export default function HomeScreen() {
     changeExerciseData,
     showSidebar,
     addSet,
+    deleteSet,
   };
   return (
     <SafeAreaView
@@ -218,7 +229,7 @@ export default function HomeScreen() {
     >
       <ScrollView className="pt-4">
         <Text className="text-white text-4xl mt-5 mb-10">Shoulders</Text>
-
+        {/* <Test /> */}
         <WorkoutContext value={contextValue}>
           {/* Exercise Card View */}
           {workoutData.map((exercise, index) => (

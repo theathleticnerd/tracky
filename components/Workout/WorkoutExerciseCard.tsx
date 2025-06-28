@@ -3,6 +3,7 @@ import WorkoutSetCard from "@/components/Workout/WorkoutSetCard";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useCallback, useContext, useState } from "react";
 import { Pressable, Text, View } from "react-native";
+import { SwipeToDeleteItem } from "./SwipeToDelete";
 import { WorkoutContext } from "./WorkoutContext";
 import WorkoutExerciseModal from "./WorkoutExerciseModal";
 
@@ -20,8 +21,13 @@ export default function WorkoutExerciseCard(props) {
     workout.addSet(exerciseIndex);
   };
 
+  // ! TESTING
+  const handleDelete = (item, index) => {
+    workout.deleteSet(exerciseIndex, index);
+  };
+
   return (
-    <View className="bg-gray-200/10 py-6 mb-12 px-2 rounded-lg w-full">
+    <View className="bg-neutral-900 py-6 mb-12 px-2 rounded-lg w-full">
       <View className="flex-row justify-between mb-8 items-start">
         <View className="flex-1">
           <Text className="text-white text-2xl">{name}</Text>
@@ -32,7 +38,7 @@ export default function WorkoutExerciseCard(props) {
         </Pressable>
       </View>
       <View className="items-center justify-center">
-        <View className="flex-row justify-between mb-2 gap-2 w-full">
+        <View className="flex-row justify-between mb-2 gap-2 w-full px-2">
           <Text className="text-gray-200 font-bold tracking-widest text-center w-1/12 ">
             SET
           </Text>
@@ -50,22 +56,31 @@ export default function WorkoutExerciseCard(props) {
           </Text>
         </View>
         <View className="gap-12 mb-4">
-          {sets.map((data, index) => (
+          {/* {sets.map((data, index) => (
             <WorkoutSetCard
               key={data.id}
               data={data}
               index={index}
               exerciseIndex={exerciseIndex}
             />
+          ))} */}
+          {sets.map((item, index) => (
+            <SwipeToDeleteItem
+              key={item.id}
+              item={item}
+              index={index}
+              deleteText="Delete Set"
+              onDelete={handleDelete}
+              deleteThreshold={0.25}
+            >
+              <WorkoutSetCard
+                data={item}
+                index={index}
+                exerciseIndex={exerciseIndex}
+              />
+            </SwipeToDeleteItem>
           ))}
         </View>
-        {/* <Pressable
-          className="self-start flex-row items-center bg-gray-950 py-4 px-4 rounded-lg border border-neutral-800 w-1/3"
-          onPress={addSet}
-        >
-          <Ionicons name="add-circle" size={24} color="#f2f2f2" />
-          <Text className="text-xl text-white ml-4 flex-1">Add Set</Text>
-        </Pressable> */}
         <Pressable className="self-start mx-2" onPress={addSet}>
           <Ionicons name="add-circle" size={32} color="#f2f2f2" />
         </Pressable>
