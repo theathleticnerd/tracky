@@ -181,6 +181,13 @@ export default function HomeScreen() {
       return data;
     });
   }, []);
+  const deleteExercise = (exerciseIndex) => {
+    setWorkoutData((prev) => {
+      const previousData = [...prev];
+      previousData.splice(exerciseIndex, 1);
+      return previousData;
+    });
+  };
   const addSet = (exerciseIndex) => {
     setWorkoutData((prev) => {
       const previousData = [...prev];
@@ -214,9 +221,10 @@ export default function HomeScreen() {
   const contextValue = {
     changeSetData,
     changeExerciseData,
-    showSidebar,
+    deleteExercise,
     addSet,
     deleteSet,
+    showSidebar,
   };
   return (
     <SafeAreaView

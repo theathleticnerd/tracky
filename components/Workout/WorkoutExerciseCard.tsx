@@ -1,31 +1,29 @@
 // @ts-nocheck
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useCallback, useContext, useState } from "react";
+import { useContext, useRef } from "react";
 import { Pressable, Text, View } from "react-native";
 import { SwipeToDeleteItem } from "./SwipeToDelete";
 import { WorkoutContext } from "./WorkoutContext";
 import WorkoutExerciseModal from "./WorkoutExerciseModal";
 import WorkoutSetCard from "./WorkoutSetCard";
+import { ActionSheetRef } from "react-native-actions-sheet";
 
 export default function WorkoutExerciseCard(props) {
   const { id, name, description, sets } = props.exercise;
   const exerciseIndex = props.index;
   const workout = useContext(WorkoutContext);
 
-  const [modalVisible, setModalVisible] = useState(false);
-  const toggleModal = useCallback(() => {
-    setModalVisible((prev) => !prev);
-  }, []);
+  const openExerciseModal = () => {
+    actionSheetRef.current?.show();
+  };
 
   const addSet = () => {
     workout.addSet(exerciseIndex);
   };
-
-  // ! TESTING
-  const handleDelete = (item, index) => {
+  const deleteSet = (item, index) => {
     workout.deleteSet(exerciseIndex, index);
   };
-
+  const actionSheetRef = useRef<ActionSheetRef>(null);
   return (
     <View className="bg-neutral-900 py-6 mb-12 px-4 rounded-lg w-full relative">
       <View className="flex-row justify-between mb-8 items-start">
@@ -33,7 +31,7 @@ export default function WorkoutExerciseCard(props) {
           <Text className="text-white text-2xl">{name}</Text>
           <Text className="text-white mt-1 text-lg">{description}</Text>
         </View>
-        <Pressable className="" onPress={toggleModal}>
+        <Pressable className="" onPress={openExerciseModal}>
           <Ionicons name="ellipsis-vertical" size={24} color="#f2f2f2" />
         </Pressable>
       </View>
@@ -63,7 +61,7 @@ export default function WorkoutExerciseCard(props) {
                 item={item}
                 index={index}
                 deleteText="Delete Set"
-                onDelete={handleDelete}
+                onDelete={deleteSet}
                 deleteThreshold={0.25}
               >
                 <WorkoutSetCard
@@ -99,11 +97,10 @@ export default function WorkoutExerciseCard(props) {
         </Pressable>
       </View>
       <WorkoutExerciseModal
+        ref={actionSheetRef}
         name={name}
         exerciseIndex={exerciseIndex}
         description={description}
-        modalVisible={modalVisible}
-        toggleModal={toggleModal}
       />
     </View>
   );

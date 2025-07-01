@@ -1,97 +1,83 @@
 import { WorkoutContext } from "@/components/Workout/WorkoutContext";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useContext, useState } from "react";
-import {
-  Modal,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Pressable, Text, TextInput, View } from "react-native";
+import ActionSheet from "react-native-actions-sheet";
 
-export default function WorkoutExerciseModal(props) {
-  const { name, description, exerciseIndex, modalVisible, toggleModal } = props;
-
-  const workout = useContext(WorkoutContext);
+export default function WorkoutExerciseModal({ ref, ...props }) {
+  const { name, description, exerciseIndex } = props;
 
   const [nameUI, setNameUI] = useState(name);
   const [descriptionUI, setDescriptionUI] = useState(description);
 
+  const workout = useContext(WorkoutContext);
   const changeExerciseData = () => {
     workout.changeExerciseData(exerciseIndex, {
       name: nameUI,
       description: descriptionUI,
     });
-    toggleModal();
+    ref.current?.hide();
   };
+  const deleteExercise = () => {
+    workout.deleteExercise(exerciseIndex);
+    ref.current?.hide();
+  };
+
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={modalVisible}
-      onRequestClose={() => {
-        // setModalVisible(!modalVisible);
-        toggleModal();
-      }}
-    >
-      <View className="flex-1 justify-center items-center">
-        <View
-          style={styles.modalView}
-          className="m-10 bg-neutral-800 border  border-neutral-700 rounded-lg py-10 items-center w-10/12"
-        >
-          <View className="mb-8">
-            <Text className="text-white mb-1">Exercise Name:</Text>
-            <TextInput
-              value={nameUI}
-              className="bg-white/80 w-96 pl-2 rounded-lg h-12 text-lg"
-              placeholder="Exercise Name"
-              onChangeText={setNameUI}
-            />
+    <ActionSheet ref={ref}>
+      <View className="bg-neutral-800">
+        <View className=" px-6 pt-12 pb-20">
+          <View className="gap-8">
+            <Text className="text-4xl text-white font-bold">{name}</Text>
+            <View>
+              <Text className="text-white text-lg font-semibold mb-1">
+                Exercise Name:
+              </Text>
+              <TextInput
+                value={nameUI}
+                className="bg-white pl-2 rounded-lg h-16 text-xl font-medium"
+                placeholder="Exercise Name"
+                onChangeText={setNameUI}
+              />
+            </View>
+            <View>
+              <Text className="text-white text-lg font-semibold mb-1">
+                Description:
+              </Text>
+              <TextInput
+                value={descriptionUI}
+                style={{ textAlignVertical: "top" }}
+                className="bg-white pl-2 rounded-lg h-40 text-xl font-medium"
+                placeholder="Description"
+                multiline
+                onChangeText={setDescriptionUI}
+              />
+            </View>
+            <Pressable
+              className="flex flex-row items-center"
+              onPress={deleteExercise}
+            >
+              <Ionicons
+                name="trash"
+                size={24}
+                color="#dc2626"
+                className="mr-4"
+              />
+              <Text className="text-red-600 text-2xl font-semibold">
+                Delete Exercise
+              </Text>
+            </Pressable>
+            <Pressable
+              className="rounded-lg w-52 py-3.5 mt-12 bg-blue-500"
+              onPress={() => changeExerciseData()}
+            >
+              <Text className="text-white text-center text-xl font-bold">
+                Save
+              </Text>
+            </Pressable>
           </View>
-          <View className="mb-8">
-            <Text className="text-white mb-1">Description:</Text>
-            <TextInput
-              value={descriptionUI}
-              style={{ textAlignVertical: "top" }}
-              className="bg-white/80 w-96 pl-2 rounded-lg h-32 align-start text-lg"
-              placeholder="Description"
-              multiline
-              onChangeText={setDescriptionUI}
-            />
-          </View>
-          <Pressable
-            className="rounded-lg w-40 py-2 bg-blue-500"
-            onPress={() =>
-              // setModalVisible(!modalVisible)/
-              changeExerciseData()
-            }
-          >
-            <Text className="text-white text-center bold">Save</Text>
-          </Pressable>
         </View>
       </View>
-    </Modal>
+    </ActionSheet>
   );
 }
-
-const styles = StyleSheet.create({
-  modalView: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
-});
