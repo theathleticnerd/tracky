@@ -68,7 +68,7 @@ export default function WorkoutExerciseModal({ ref, ...props }) {
               </Text>
             </Pressable>
             <Pressable
-              className="rounded-lg w-52 py-3.5 mt-12 bg-blue-500"
+              className="rounded-lg py-3.5 mt-12 bg-blue-600"
               onPress={() => changeExerciseData()}
             >
               <Text className="text-white text-center text-xl font-bold">
