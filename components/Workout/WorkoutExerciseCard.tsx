@@ -37,7 +37,7 @@ export default function WorkoutExerciseCard(props) {
       </View>
       {sets.length > 0 ? (
         <View className="items-center justify-start min-h-40">
-          <View className="flex-row justify-between mb-2 gap-2 w-full px-2">
+          <View className="flex-row justify-between mb-2 gap-2 w-full">
             <Text className="text-gray-200 font-bold tracking-widest text-center w-1/12 ">
               SET
             </Text>

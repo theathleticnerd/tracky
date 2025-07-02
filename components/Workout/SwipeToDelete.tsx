@@ -142,7 +142,7 @@ export const SwipeToDeleteItem = ({
 const styles = StyleSheet.create({
   container: {
     marginVertical: 2,
-    overflow: "hidden",
+    // overflow: "hidden",
   },
   deleteBackground: {
     position: "absolute",
@@ -163,44 +163,5 @@ const styles = StyleSheet.create({
   deleteText: {
     fontSize: 16,
     fontWeight: "bold",
-  },
-  itemContainer: {
-    backgroundColor: "white",
-    borderRadius: 8,
-    elevation: 2,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-  },
-  itemContent: {
-    padding: 16,
-    borderRadius: 8,
-    backgroundColor: "white",
-  },
-  itemTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 4,
-  },
-  itemSubtitle: {
-    fontSize: 14,
-    color: "#665",
-  },
-  exampleContainer: {
-    flex: 1,
-    backgroundColor: "#f5f5f5",
-    padding: 16,
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: 20,
-    color: "#333",
   },
 });
