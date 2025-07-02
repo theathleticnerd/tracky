@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { WorkoutContext } from "@/components/Workout/WorkoutContext";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useContext, useState } from "react";
@@ -26,7 +27,7 @@ export default function WorkoutExerciseModal({ ref, ...props }) {
   return (
     <ActionSheet ref={ref}>
       <View className="bg-neutral-800">
-        <View className=" px-6 pt-12 pb-20">
+        <View className="px-6 pt-12 pb-20">
           <View className="gap-8">
             <Text className="text-4xl text-white font-bold">{name}</Text>
             <View>

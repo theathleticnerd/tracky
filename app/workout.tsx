@@ -6,6 +6,7 @@ import { WorkoutContext } from "@/components/Workout/WorkoutContext";
 import WorkoutExerciseCard from "@/components/Workout/WorkoutExerciseCard";
 import { useCallback, useEffect, useState } from "react";
 import { Platform, SafeAreaView, ScrollView, Text } from "react-native";
+import { Link } from "expo-router";
 
 const data = [
   {
@@ -233,11 +234,15 @@ export default function HomeScreen() {
       }}
       className="flex-1 px-5 min-w-full"
     >
+      <Link
+        className="text-white bg-blue-400 h-20 my-10"
+        href="workout-listing"
+      >
+        Hello world
+      </Link>
       <ScrollView className="pt-4">
         <Text className="text-white text-4xl mt-5 mb-10">Shoulders</Text>
-        {/* <Test /> */}
         <WorkoutContext value={contextValue}>
-          {/* Exercise Card View */}
           {workoutData.map((exercise, index) => (
             <WorkoutExerciseCard
               key={exercise.id}
