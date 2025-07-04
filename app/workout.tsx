@@ -4,9 +4,11 @@ import "@/global.css";
 import Snackbar from "@/components/Snackbar";
 import { WorkoutContext } from "@/components/Workout/WorkoutContext";
 import WorkoutExerciseCard from "@/components/Workout/WorkoutExerciseCard";
-import { useCallback, useEffect, useState } from "react";
-import { Platform, SafeAreaView, ScrollView, Text } from "react-native";
-import { Link } from "expo-router";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Platform, SafeAreaView, ScrollView, Text, View } from "react-native";
+import BackButton from "@/components/ui/BackButton";
+import FloatingAddButton from "@/components/ui/FloatingAddButton";
+import AddExerciseModal from "@/components/Workout/AddExerciseModal";
 
 const data = [
   {
@@ -152,7 +154,7 @@ const data = [
   },
 ];
 
-export default function HomeScreen() {
+export default function Workout() {
   const [workoutData, setWorkoutData] = useState([]);
   const [sidebarData, setSidebarData] = useState({ type: null, message: "" });
   useEffect(() => {
@@ -211,14 +213,12 @@ export default function HomeScreen() {
       return previousData;
     });
   };
-
   const showSidebar = (type, message) => {
     setSidebarData({ type: type, message: message });
     setTimeout(() => {
       setSidebarData({ type: null, message: null });
     }, 2000);
   };
-
   const contextValue = {
     changeSetData,
     changeExerciseData,
@@ -227,6 +227,12 @@ export default function HomeScreen() {
     deleteSet,
     showSidebar,
   };
+
+  const addExerciseModalRef = useRef<ActionSheetRef>(null);
+  const openAddExerciseModal = () => {
+    addExerciseModalRef.current?.show();
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -234,24 +240,25 @@ export default function HomeScreen() {
       }}
       className="flex-1 px-5 min-w-full"
     >
-      <Link
-        className="text-white bg-blue-400 h-20 my-10"
-        href="workout-listing"
-      >
-        Hello world
-      </Link>
       <ScrollView className="pt-4">
-        <Text className="text-white text-4xl mt-5 mb-10">Shoulders</Text>
-        <WorkoutContext value={contextValue}>
-          {workoutData.map((exercise, index) => (
-            <WorkoutExerciseCard
-              key={exercise.id}
-              index={index}
-              exercise={exercise}
-            />
-          ))}
-        </WorkoutContext>
+        <View className="mt-5 mb-10 flex-row gap-4 items-center">
+          <BackButton />
+          <Text className="text-white text-4xl font-medium">Shoulders</Text>
+        </View>
+        <View className="mb-20">
+          <WorkoutContext value={contextValue}>
+            {workoutData.map((exercise, index) => (
+              <WorkoutExerciseCard
+                key={exercise.id}
+                index={index}
+                exercise={exercise}
+              />
+            ))}
+          </WorkoutContext>
+        </View>
       </ScrollView>
+      <FloatingAddButton onPress={openAddExerciseModal} />
+      <AddExerciseModal ref={addExerciseModalRef} />
       {sidebarData.type && (
         <Snackbar type={sidebarData.type} message={sidebarData.message} />
       )}

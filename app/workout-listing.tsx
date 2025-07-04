@@ -7,12 +7,13 @@ import {
   Text,
   View,
 } from "react-native";
-import React, { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import WorkoutListingCard from "@/components/WorkoutListing/WorkoutListingCard";
 import AddWorkoutModal from "@/components/WorkoutListing/AddWorkoutModal";
 import { ActionSheetRef } from "react-native-actions-sheet";
 import WorkoutDetailsModal from "@/components/WorkoutListing/WorkoutDetailsModal";
+import BackButton from "@/components/ui/BackButton";
 
 export default function WorkoutListing() {
   const addWorkoutModalRef = useRef<ActionSheetRef>(null);
@@ -21,9 +22,9 @@ export default function WorkoutListing() {
   };
 
   const workoutDetailsModalRef = useRef<ActionSheetRef>(null);
-  const openWorkoutDetailsModal = () => {
+  const openWorkoutDetailsModal = useCallback(() => {
     workoutDetailsModalRef.current?.show();
-  };
+  }, []);
   return (
     <SafeAreaView
       style={{
@@ -31,12 +32,15 @@ export default function WorkoutListing() {
       }}
       className="flex-1 px-5 min-w-full relative"
     >
-      <ScrollView className="pt-4 px-2">
-        <Text className="text-white text-4xl mt-5 mb-10 capitalize">
-          5 day workout
-        </Text>
-        <View className="gap-8">
-          {[1].map((workout) => (
+      <ScrollView className="pt-4 px-2 ">
+        <View className="mt-5 mb-10 flex-row gap-4 items-center">
+          <BackButton />
+          <Text className="text-white text-4xl font-medium">
+            5 Day Workout Plan
+          </Text>
+        </View>
+        <View className="gap-8 mb-20">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((workout) => (
             <WorkoutListingCard
               key={workout}
               openWorkoutDetailsModal={openWorkoutDetailsModal}

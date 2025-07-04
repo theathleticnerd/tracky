@@ -2,10 +2,10 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useContext, useRef } from "react";
 import { Pressable, Text, View } from "react-native";
-import { SwipeToDeleteItem } from "./SwipeToDelete";
-import { WorkoutContext } from "./WorkoutContext";
-import WorkoutExerciseModal from "./WorkoutExerciseModal";
-import WorkoutSetCard from "./WorkoutSetCard";
+import { SwipeToDeleteItem } from "@/components/Workout/SwipeToDelete";
+import { WorkoutContext } from "@/components/Workout/WorkoutContext";
+import ExerciseDetailModal from "@/components/Workout/ExerciseDetailModal";
+import WorkoutSetCard from "@/components/Workout/WorkoutSetCard";
 import { ActionSheetRef } from "react-native-actions-sheet";
 
 export default function WorkoutExerciseCard(props) {
@@ -96,7 +96,7 @@ export default function WorkoutExerciseCard(props) {
           <Ionicons name="add-circle" size={36} color="#f2f2f2" />
         </Pressable>
       </View>
-      <WorkoutExerciseModal
+      <ExerciseDetailModal
         ref={actionSheetRef}
         name={name}
         exerciseIndex={exerciseIndex}

@@ -26,11 +26,12 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack>
-          <Stack.Screen name="workout" options={{ headerShown: false }} />
+          <Stack.Screen name="plan-listing" options={{ headerShown: false }} />
           <Stack.Screen
             name="workout-listing"
             options={{ headerShown: false }}
           />
+          <Stack.Screen name="workout" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
         <StatusBar style="auto" />

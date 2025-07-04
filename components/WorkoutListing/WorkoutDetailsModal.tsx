@@ -50,9 +50,13 @@ export default function WorkoutDetailsModal({ ref, ...props }) {
               placeholder="Push 2"
               onChangeText={setWorkoutName}
             />
-            <Text className="text-red-600 mt-2 font-medium text-lg">
-              {errorMessages.workoutName || ""}
-            </Text>
+            {errorMessages.workoutName ? (
+              <Text className="text-red-600 mt-2 font-medium">
+                {errorMessages.workoutName}
+              </Text>
+            ) : (
+              ""
+            )}
           </View>
 
           <View>

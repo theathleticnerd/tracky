@@ -3,32 +3,32 @@ import { useState } from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import ActionSheet from "react-native-actions-sheet";
 
-export default function AddWorkoutModal({ ref, ...props }) {
-  const [workoutName, setWorkoutName] = useState("");
-  const [workoutDescription, setWorkoutDescription] = useState("");
+export default function AddExerciseModal({ ref, ...props }) {
+  const [exerciseName, setExerciseName] = useState("");
+  const [exerciseDescription, setExerciseDescription] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
 
-  const validateWorkoutData = () => {
+  const validateExerciseData = () => {
     setErrorMessages({});
-    if (!workoutName) {
-      const errorMessage = "Please add a workout name.";
+    if (!exerciseName) {
+      const errorMessage = "Please add a exercise name.";
       setErrorMessages((prev) => {
-        return { ...prev, workoutName: errorMessage };
+        return { ...prev, exerciseName: errorMessage };
       });
       return false;
     }
-    if (workoutName.length < 3) {
-      const errorMessage = "Workout name should be at least 3 characters.";
+    if (exerciseName.length < 3) {
+      const errorMessage = "Exercise name should be at least 3 characters.";
       setErrorMessages((prev) => {
-        return { ...prev, workoutName: errorMessage };
+        return { ...prev, exerciseName: errorMessage };
       });
       return false;
     }
 
     return true;
   };
-  const createWorkout = () => {
-    const isValid = validateWorkoutData();
+  const createExercise = () => {
+    const isValid = validateExerciseData();
     if (isValid) {
       ref.current.hide();
     } else {
@@ -38,20 +38,20 @@ export default function AddWorkoutModal({ ref, ...props }) {
     <ActionSheet ref={ref}>
       <View className="px-6 pt-12 pb-20 bg-neutral-800">
         <Text className="text-white text-3xl font-semibold mb-6">
-          Add Workout
+          Add Exercise
         </Text>
         <View className="gap-8">
           <View>
             <Text className="text-white text-lg font-semibold mb-2">Name:</Text>
             <TextInput
-              value={workoutName}
+              value={exerciseName}
               className="bg-white pl-2 rounded-lg h-16 text-xl font-medium"
-              placeholder="Push 2"
-              onChangeText={setWorkoutName}
+              placeholder="Bench Press"
+              onChangeText={setExerciseName}
             />
-            {errorMessages.workoutName ? (
+            {errorMessages.exerciseName ? (
               <Text className="text-red-600 mt-2 font-medium">
-                {errorMessages.workoutName}
+                {errorMessages.exerciseName}
               </Text>
             ) : (
               ""
@@ -63,26 +63,24 @@ export default function AddWorkoutModal({ ref, ...props }) {
               Description:
             </Text>
             <TextInput
-              value={workoutDescription}
+              value={exerciseDescription}
               style={{ textAlignVertical: "top" }}
               className="bg-white pl-2 rounded-lg h-40 text-xl font-medium"
-              placeholder="A more shoulder focused push day..."
+              placeholder="Focus on form, not weight..."
               multiline
-              onChangeText={setWorkoutDescription}
+              onChangeText={setExerciseDescription}
             />
           </View>
         </View>
         <Pressable
           className="rounded-lg py-3.5 mt-12 bg-blue-600"
-          onPress={createWorkout}
+          onPress={createExercise}
         >
           <Text className="text-white text-center text-xl font-bold">
-            Create Workout
+            Create Exercise
           </Text>
         </Pressable>
       </View>
     </ActionSheet>
   );
 }
-
-const styles = StyleSheet.create({});

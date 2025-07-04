@@ -54,8 +54,9 @@ export default function WorkoutExerciseModal({ ref, ...props }) {
                 onChangeText={setDescriptionUI}
               />
             </View>
+
             <Pressable
-              className="flex flex-row items-center"
+              className="flex-row py-4 px-2 rounded-lg bg-red-900/20 border border-red-600"
               onPress={deleteExercise}
             >
               <Ionicons
