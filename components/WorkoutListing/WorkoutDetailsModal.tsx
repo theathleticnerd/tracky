@@ -5,7 +5,8 @@ import ActionSheet from "react-native-actions-sheet";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function WorkoutDetailsModal({ ref, ...props }) {
-  const [workoutName, setWorkoutName] = useState("");
+  const { data } = props;
+  const [workoutName, setWorkoutName] = useState(data.name);
   const [workoutDescription, setWorkoutDescription] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
 
@@ -39,7 +40,7 @@ export default function WorkoutDetailsModal({ ref, ...props }) {
     <ActionSheet ref={ref}>
       <View className="px-6 pt-10 pb-20 bg-neutral-800">
         <Text className="text-white text-3xl font-semibold mb-4">
-          Shoulders
+          {data.name}
         </Text>
         <View className="gap-3 mb-12">
           <View>

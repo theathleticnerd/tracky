@@ -8,10 +8,8 @@ export default function WorkoutSetCard(props: any) {
   const index = props.index;
   const exerciseIndex = props.exerciseIndex;
   const workout = useContext(WorkoutContext);
-
-  // const [isDone, setIsDone] = useState(false);
-  const [weightUI, setWeightUI] = useState("");
-  const [repsUI, setRepsUI] = useState("");
+  const [weightUI, setWeightUI] = useState(weight);
+  const [repsUI, setRepsUI] = useState(reps);
 
   const verifyData = () => {
     const weightValue = parseInt(weightUI);
@@ -38,14 +36,26 @@ export default function WorkoutSetCard(props: any) {
 
     return true;
   };
-  const changeSetData = () => {
-    const isVerified = verifyData();
-    if (isVerified) {
-      const obj = {
-        reps: repsUI,
-        weight: weightUI,
+  const modifySet = () => {
+    const isChecked = !isDone;
+    if (isChecked) {
+      const isVerified = verifyData();
+      if (isVerified) {
+        const setObj = {
+          isDone: true,
+          weight: weightUI,
+          reps: repsUI,
+        };
+        workout.modifySet(exerciseIndex, index, setObj);
+      }
+    } else {
+      // If unchecked => use the old data
+      const setObj = {
+        isDone: false,
+        weight: weight,
+        reps: reps,
       };
-      workout.changeSetData(exerciseIndex, index, obj);
+      workout.modifySet(exerciseIndex, index, setObj);
     }
   };
 
@@ -55,7 +65,9 @@ export default function WorkoutSetCard(props: any) {
         {index + 1}
       </Text>
       <View className="text-center w-2/12 text-sm flex items-center justify-center">
-        <Text className="text-gray-200 font-semibold">4 x 20 kgs</Text>
+        <Text className="text-gray-200 font-semibold">
+          {bestLift || "----"}
+        </Text>
       </View>
       <Text className="text-gray-200 font-bold text-center w-3/12">
         <TextInput
@@ -78,9 +90,7 @@ export default function WorkoutSetCard(props: any) {
       <View className={"text-gray-200 font-bold text-center w-1/12"}>
         <Pressable
           className={`flex items-center justify-center size-11 rounded-lg ${isDone ? "bg-green-500" : "bg-white/40"}`}
-          onPress={() => {
-            changeSetData();
-          }}
+          onPress={modifySet}
         >
           <Text
             className={`text-2xl  ${isDone ? "text-gray-50" : "text-gray-800"}`}

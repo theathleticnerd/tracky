@@ -10,6 +10,8 @@ import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { Provider } from "react-redux";
+import store from "@/store/index";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -25,16 +27,21 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="plan-listing" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="workout-listing"
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="workout" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-        <StatusBar style="auto" />
+        <Provider store={store}>
+          <Stack>
+            <Stack.Screen
+              name="plan-listing"
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="workout-listing"
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="workout" options={{ headerShown: false }} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+          <StatusBar style="auto" />
+        </Provider>
       </ThemeProvider>
     </GestureHandlerRootView>
   );

@@ -12,19 +12,26 @@ import { Ionicons } from "@expo/vector-icons";
 import WorkoutListingCard from "@/components/WorkoutListing/WorkoutListingCard";
 import AddWorkoutModal from "@/components/WorkoutListing/AddWorkoutModal";
 import { ActionSheetRef } from "react-native-actions-sheet";
-import WorkoutDetailsModal from "@/components/WorkoutListing/WorkoutDetailsModal";
 import BackButton from "@/components/ui/BackButton";
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+import { setWorkoutID } from "@/store/slices/workoutSlice";
 
+import { router } from "expo-router";
 export default function WorkoutListing() {
+  const planID = useSelector((state) => state.workout.planID);
+  const planData = useSelector((state) => state.workout.data[planID]);
+
   const addWorkoutModalRef = useRef<ActionSheetRef>(null);
   const openAddWorkoutModal = () => {
     addWorkoutModalRef.current?.show();
   };
 
-  const workoutDetailsModalRef = useRef<ActionSheetRef>(null);
-  const openWorkoutDetailsModal = useCallback(() => {
-    workoutDetailsModalRef.current?.show();
-  }, []);
+  const dispatch = useDispatch();
+  const goToWorkout = (id) => {
+    dispatch(setWorkoutID(id));
+    router.push("/workout");
+  };
   return (
     <SafeAreaView
       style={{
@@ -36,14 +43,16 @@ export default function WorkoutListing() {
         <View className="mt-5 mb-10 flex-row gap-4 items-center">
           <BackButton />
           <Text className="text-white text-4xl font-medium">
-            5 Day Workout Plan
+            {planData.name}
           </Text>
         </View>
         <View className="gap-8 mb-20">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((workout) => (
+          {planData.sessions.map((workout, index) => (
             <WorkoutListingCard
-              key={workout}
-              openWorkoutDetailsModal={openWorkoutDetailsModal}
+              key={`${workout.name}-${index}`}
+              data={workout}
+              workoutIndex={index}
+              goToWorkout={goToWorkout}
             />
           ))}
         </View>
@@ -56,7 +65,6 @@ export default function WorkoutListing() {
         <Ionicons name="add" size={40} color="#f2f2f2" />
       </Pressable>
       <AddWorkoutModal ref={addWorkoutModalRef} />
-      <WorkoutDetailsModal ref={workoutDetailsModalRef} />
     </SafeAreaView>
   );
 }

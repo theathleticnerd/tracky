@@ -1,0 +1,851 @@
+[
+  {
+    "name": "Push Pull Legs",
+    "sessions": [
+      {
+        "name": "Push Day",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "Bench Press",
+            "description": "A compound chest movement.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "40",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "50",
+                "reps": "8",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "60",
+                "reps": "6",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Overhead Dumbbell Press",
+            "description": "Works the front and side delts along with triceps.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "10",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "12.5",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "15",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "name": "Tricep Pushdown",
+            "description": "Isolates the tricep muscles.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "20",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "25",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "30",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Pull Day",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "Deadlift",
+            "description": "Full-body posterior chain builder.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "70",
+                "reps": "6",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "80",
+                "reps": "5",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "90",
+                "reps": "3",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Bent Over Row",
+            "description": "Builds mid-back thickness.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "30",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "35",
+                "reps": "8",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "40",
+                "reps": "6",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "name": "Barbell Curl",
+            "description": "Targets biceps brachii.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "15",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "20",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "22.5",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Leg Day",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "Squat",
+            "description": "Primary quad and glute compound movement.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "60",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "70",
+                "reps": "8",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "80",
+                "reps": "6",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Leg Press",
+            "description": "Works quads and glutes with more load.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "120",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "140",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "160",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "name": "Leg Curl",
+            "description": "Isolates the hamstrings.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "25",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "30",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "35",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Upper Lower",
+    "sessions": [
+      {
+        "name": "Upper Body",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "Incline Dumbbell Press",
+            "description": "Targets upper chest and shoulders.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "15",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "17.5",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "20",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Lat Pulldown",
+            "description": "Targets the lats and upper back.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "40",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "45",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "50",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "name": "Lateral Raise",
+            "description": "Targets lateral deltoids.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "5",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "7.5",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "10",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Lower Body",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "Romanian Deadlift",
+            "description": "Strengthens hamstrings and glutes.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "40",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "45",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "50",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Walking Lunges",
+            "description": "Improves balance and unilateral strength.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "10",
+                "reps": "20",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "12",
+                "reps": "20",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "15",
+                "reps": "16",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "name": "Calf Raise",
+            "description": "Isolates and strengthens the calves.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "20",
+                "reps": "15",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "25",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "30",
+                "reps": "10",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bro Split",
+    "sessions": [
+      {
+        "name": "Chest Day",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "Flat Bench Press",
+            "description": "Primary movement for chest.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "50",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "60",
+                "reps": "8",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "65",
+                "reps": "6",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Chest Fly",
+            "description": "Stretches and isolates the chest muscles.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "10",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "12.5",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "15",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Back Day",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "Pull-Up",
+            "description": "Bodyweight back strengthener.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "",
+                "reps": "8",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "",
+                "reps": "6",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "",
+                "reps": "5",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Seated Cable Row",
+            "description": "Mid-back and lat development.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "35",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "40",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "45",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Leg Day",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "Leg Extension",
+            "description": "Isolates quadriceps.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "40",
+                "reps": "15",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "50",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "60",
+                "reps": "10",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Leg Curl",
+            "description": "Isolates hamstrings.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "25",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "30",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "35",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Shoulder Day",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "Lateral Raise",
+            "description": "Targets the lateral deltoids for width and definition.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "",
+                "reps": "",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "5",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "5",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Overhead Dumbbell Press",
+            "description": "Works the front and side delts along with triceps.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "10",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "12.5",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "15",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "name": "Front Raise",
+            "description": "Isolates the anterior deltoids.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "5",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "7.5",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "10",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "name": "Reverse Pec Deck Fly",
+            "description": "Targets the rear delts and upper back.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "20",
+                "reps": "15",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "25",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "30",
+                "reps": "10",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 5,
+            "name": "Arnold Press",
+            "description": "A dynamic pressing movement that hits all three heads of the deltoid.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "10",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "12.5",
+                "reps": "8",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "15",
+                "reps": "6",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Arm Day",
+        "exercises": [
+          {
+            "id": 1,
+            "name": "EZ Bar Curl",
+            "description": "Bicep-focused curling movement.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "20",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "25",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "30",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Skullcrusher",
+            "description": "Targets triceps, especially long head.",
+            "sets": [
+              {
+                "id": 1,
+                "bestLift": null,
+                "weight": "15",
+                "reps": "12",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "bestLift": null,
+                "weight": "17.5",
+                "reps": "10",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "bestLift": null,
+                "weight": "20",
+                "reps": "8",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

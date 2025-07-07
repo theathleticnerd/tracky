@@ -1,9 +1,10 @@
 // @ts-nocheck
 import { useState } from "react";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import ActionSheet from "react-native-actions-sheet";
 
 export default function AddExerciseModal({ ref, ...props }) {
+  const { addExercise } = props;
   const [exerciseName, setExerciseName] = useState("");
   const [exerciseDescription, setExerciseDescription] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
@@ -30,6 +31,7 @@ export default function AddExerciseModal({ ref, ...props }) {
   const createExercise = () => {
     const isValid = validateExerciseData();
     if (isValid) {
+      addExercise(exerciseName, exerciseDescription);
       ref.current.hide();
     } else {
     }
@@ -42,7 +44,9 @@ export default function AddExerciseModal({ ref, ...props }) {
         </Text>
         <View className="gap-8">
           <View>
-            <Text className="text-white text-lg font-semibold mb-2">Name:</Text>
+            <Text className="text-white text-lg font-semibold mb-2">
+              Exercise Name:
+            </Text>
             <TextInput
               value={exerciseName}
               className="bg-white pl-2 rounded-lg h-16 text-xl font-medium"
@@ -72,14 +76,14 @@ export default function AddExerciseModal({ ref, ...props }) {
             />
           </View>
         </View>
-        <Pressable
+        <TouchableOpacity
           className="rounded-lg py-3.5 mt-12 bg-blue-600"
           onPress={createExercise}
         >
           <Text className="text-white text-center text-xl font-bold">
             Create Exercise
           </Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </ActionSheet>
   );
