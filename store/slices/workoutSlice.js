@@ -17,7 +17,46 @@ const workoutSlice = createSlice({
     setWorkoutID: (state, action) => {
       state.workoutID = action.payload;
     },
+    // Plan
+    addPlanData: (state, action) => {
+      const { planObj } = action.payload;
+      const data = state.data;
+      data.push(planObj);
+    },
+    modifyPlanData: (state, action) => {
+      const { planID, planObj } = action.payload;
+      const data = state.data;
+      data[planID].name = planObj.name;
+    },
+    deletePlanData: (state, action) => {
+      const { planID } = action.payload;
+      const data = state.data;
+      data.splice(planID, 1);
+    },
+    // Workout
+    addWorkoutData: (state, action) => {
+      const { workoutObj } = action.payload;
 
+      const planID = state.planID;
+      const planData = state.data[planID].sessions;
+      // Add new ID
+      // TODO: Include ids to sessions.
+
+      planData.push(workoutObj);
+    },
+    modifyWorkoutData: (state, action) => {
+      const { workoutID, workoutObj } = action.payload;
+      const planID = state.planID;
+      const planData = state.data[planID].sessions;
+      planData[workoutID].name = workoutObj.name;
+      planData[workoutID].description = workoutObj.description;
+    },
+    deleteWorkoutData: (state, action) => {
+      const { workoutID } = action.payload;
+      const planID = state.planID;
+      const planData = state.data[planID].sessions;
+      planData.splice(workoutID, 1);
+    },
     // Exercise
     addExerciseData: (state, action) => {
       const { exerciseObj } = action.payload;
@@ -25,7 +64,9 @@ const workoutSlice = createSlice({
       const workoutID = state.workoutID;
       const exerciseData = state.data[planID].sessions[workoutID].exercises;
       // Add new ID
-      const newID = exerciseData.length ? exerciseData[exerciseData.length - 1].id + 1 : 0;
+      const newID = exerciseData.length
+        ? exerciseData[exerciseData.length - 1].id + 1
+        : 0;
       exerciseObj.id = newID;
 
       exerciseData.push(exerciseObj);
@@ -62,11 +103,11 @@ const workoutSlice = createSlice({
       const { exerciseIndex, setIndex, setObj } = action.payload;
       const planID = state.planID;
       const workoutID = state.workoutID;
-      const setData = state.data[planID].sessions[workoutID].exercises[exerciseIndex].sets;
+      const setData =
+        state.data[planID].sessions[workoutID].exercises[exerciseIndex].sets;
 
       // Check if best lift => if new weight is greater than previously recorded best lift
       if (setObj.weight > setData[setIndex].weight) {
-
       }
 
       setData[setIndex].weight = setObj.weight;
@@ -88,6 +129,12 @@ export default workoutSlice.reducer;
 export const {
   setPlanID,
   setWorkoutID,
+  addPlanData,
+  modifyPlanData,
+  deletePlanData,
+  addWorkoutData,
+  modifyWorkoutData,
+  deleteWorkoutData,
   addExerciseData,
   modifyExerciseData,
   deleteExerciseData,

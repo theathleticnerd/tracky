@@ -1,11 +1,18 @@
 // @ts-nocheck
-import { Pressable, StyleSheet, Text, View, TextInput } from "react-native";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { useState } from "react";
 import ActionSheet from "react-native-actions-sheet";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function WorkoutDetailsModal({ ref, ...props }) {
-  const { data } = props;
+  const { data, workoutIndex, modifyWorkout, deleteWorkout } = props;
   const [workoutName, setWorkoutName] = useState(data.name);
   const [workoutDescription, setWorkoutDescription] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
@@ -29,9 +36,16 @@ export default function WorkoutDetailsModal({ ref, ...props }) {
 
     return true;
   };
-  const changeWorkoutData = () => {
+  const changeWorkout = () => {
+    if (workoutName === data.name) {
+      // If nothing has changed... Just close the modal
+      ref.current.hide();
+    }
+
     const isValid = validateWorkoutData();
     if (isValid) {
+      const workoutObj = { name: workoutName, description: workoutDescription };
+      modifyWorkout(workoutIndex, workoutObj);
       ref.current.hide();
     } else {
     }
@@ -74,18 +88,21 @@ export default function WorkoutDetailsModal({ ref, ...props }) {
             />
           </View>
         </View>
-        <Pressable className="flex-row py-4 px-2 rounded-lg bg-red-900/20 border border-red-600">
+        <TouchableOpacity
+          className="flex-row py-4 px-2 rounded-lg bg-red-900/20 border border-red-600"
+          onPress={() => deleteWorkout(workoutIndex)}
+        >
           <Ionicons name="trash" size={24} color="#dc2626" className="mr-4" />
           <Text className="text-red-600 text-2xl font-semibold">
             Delete Exercise
           </Text>
-        </Pressable>
-        <Pressable
+        </TouchableOpacity>
+        <TouchableOpacity
           className="rounded-lg py-3.5 mt-12 bg-blue-600"
-          onPress={changeWorkoutData}
+          onPress={changeWorkout}
         >
           <Text className="text-white text-center text-xl font-bold">Save</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </ActionSheet>
   );

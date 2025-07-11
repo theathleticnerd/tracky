@@ -7,7 +7,8 @@ import WorkoutDetailsModal from "@/components/WorkoutListing/WorkoutDetailsModal
 import { useRef } from "react";
 
 export default function WorkoutListingCard(props) {
-  const { data, workoutIndex, goToWorkout } = props;
+  const { data, workoutIndex, goToWorkout, modifyWorkout, deleteWorkout } =
+    props;
   const workoutDetailsModalRef = useRef<ActionSheetRef>(null);
   const openWorkoutDetailsModal = (index) => {
     workoutDetailsModalRef.current?.show();
@@ -32,7 +33,13 @@ export default function WorkoutListingCard(props) {
         </View>
         <Ionicons name="chevron-forward-circle" size={35} color="lightgray" />
       </TouchableOpacity>
-      <WorkoutDetailsModal ref={workoutDetailsModalRef} data={data} />
+      <WorkoutDetailsModal
+        ref={workoutDetailsModalRef}
+        data={data}
+        workoutIndex={workoutIndex}
+        modifyWorkout={modifyWorkout}
+        deleteWorkout={deleteWorkout}
+      />
     </>
   );
 }

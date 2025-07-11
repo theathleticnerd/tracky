@@ -1,14 +1,13 @@
 // @ts-nocheck
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
+import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import ActionSheet from "react-native-actions-sheet";
-import { TextInput } from "react-native-gesture-handler";
 
-export default function AddPlanModal({ ref, ...props }) {
-  const { addPlan } = props;
-  const [planName, setPlanName] = useState("");
+export default function PlanDetailsModal(props) {
+  const { ref, data, planIndex, modifyPlan, deletePlan } = props;
+  const [planName, setPlanName] = useState(data.name);
   const [errorMessages, setErrorMessages] = useState({});
-
   const validatePlanData = () => {
     setErrorMessages({});
     if (!planName) {
@@ -24,22 +23,28 @@ export default function AddPlanModal({ ref, ...props }) {
 
     return true;
   };
-  const createPlan = () => {
+  const changePlan = () => {
+    if (planName === data.name) {
+      // If no changes...just close the modal
+      ref.current.hide();
+    }
+
     const isValid = validatePlanData();
     if (isValid) {
-      addPlan(planName);
+      const planObj = {
+        name: planName,
+      };
+      modifyPlan(planIndex, planObj);
       ref.current.hide();
-      setPlanName("");
     } else {
     }
   };
   return (
     <ActionSheet ref={ref}>
-      <View className="px-6 pt-12 pb-20 bg-neutral-800">
-        <Text className="text-white text-3xl font-semibold mb-6">
-          Create a new plan
+      <View className="px-6 pt-10 pb-20 bg-neutral-800">
+        <Text className="text-white text-3xl font-semibold mb-4">
+          {data.name}
         </Text>
-
         <View>
           <Text className="text-white text-lg font-semibold mb-2">Name:</Text>
           <TextInput
@@ -56,17 +61,24 @@ export default function AddPlanModal({ ref, ...props }) {
             ""
           )}
         </View>
-        <Pressable
-          className="rounded-lg py-3.5 mt-12 bg-blue-600"
-          onPress={createPlan}
+        <TouchableOpacity
+          className="mt-12 flex-row py-4 px-2 rounded-lg bg-red-900/20 border border-red-600"
+          onPress={() => deletePlan(planIndex)}
         >
-          <Text className="text-white text-center text-xl font-bold">
-            Create Workout
+          <Ionicons name="trash" size={24} color="#dc2626" className="mr-4" />
+          <Text className="text-red-600 text-2xl font-semibold">
+            Delete Exercise
           </Text>
-        </Pressable>
+        </TouchableOpacity>
+        <TouchableOpacity className="mt-24 rounded-lg py-3.5 bg-blue-600">
+          <Text
+            className="text-white text-center text-xl font-bold"
+            onPress={changePlan}
+          >
+            Save Changes
+          </Text>
+        </TouchableOpacity>
       </View>
     </ActionSheet>
   );
 }
-
-const styles = StyleSheet.create({});

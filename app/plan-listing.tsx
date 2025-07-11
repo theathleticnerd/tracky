@@ -8,7 +8,12 @@ import { ActionSheetRef } from "react-native-actions-sheet";
 import AddPlanModal from "@/components/PlanListing/AddPlanModal";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setPlanID } from "@/store/slices/workoutSlice";
+import {
+  addPlanData,
+  deletePlanData,
+  modifyPlanData,
+  setPlanID,
+} from "@/store/slices/workoutSlice";
 
 export default function PlanListing() {
   const addPlanModalRef = useRef<ActionSheetRef>(null);
@@ -18,15 +23,19 @@ export default function PlanListing() {
 
   const planData = useSelector((state) => state.workout.data);
   const dispatch = useDispatch();
-  // const incrementCount = () => {
-  //   dispatch(increment(10));
-  // };
-  // const decrementCount = () => {
-  //   dispatch(decrement());
-  // };
   const selectPlan = (index) => {
     dispatch(setPlanID(index));
     router.push("/workout-listing");
+  };
+  const addPlan = (name) => {
+    const planObj = { name: name, sessions: [] };
+    dispatch(addPlanData({ planObj }));
+  };
+  const modifyPlan = (planIndex, planObj) => {
+    dispatch(modifyPlanData({ planID: planIndex, planObj: planObj }));
+  };
+  const deletePlan = (planIndex) => {
+    dispatch(deletePlanData({ planID: planIndex }));
   };
   return (
     <SafeAreaView
@@ -48,13 +57,16 @@ export default function PlanListing() {
             <PlanListingCard
               key={`${plan.name}-${index}`}
               data={plan}
-              onPress={() => selectPlan(index)}
+              planIndex={index}
+              modifyPlan={modifyPlan}
+              onPress={selectPlan}
+              deletePlan={deletePlan}
             />
           ))}
         </View>
       </ScrollView>
       <FloatingAddButton onPress={openAddPlanModal} />
-      <AddPlanModal ref={addPlanModalRef} />
+      <AddPlanModal ref={addPlanModalRef} addPlan={addPlan} />
     </SafeAreaView>
   );
 }

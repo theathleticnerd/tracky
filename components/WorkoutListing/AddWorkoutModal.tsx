@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import ActionSheet from "react-native-actions-sheet";
 
 export default function AddWorkoutModal({ ref, ...props }) {
+  const { addWorkout } = props;
   const [workoutName, setWorkoutName] = useState("");
   const [workoutDescription, setWorkoutDescription] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
@@ -31,6 +32,7 @@ export default function AddWorkoutModal({ ref, ...props }) {
     const isValid = validateWorkoutData();
     if (isValid) {
       ref.current.hide();
+      addWorkout(workoutName, workoutDescription);
     } else {
     }
   };

@@ -7,7 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import WorkoutListingCard from "@/components/WorkoutListing/WorkoutListingCard";
 import AddWorkoutModal from "@/components/WorkoutListing/AddWorkoutModal";
@@ -15,9 +15,15 @@ import { ActionSheetRef } from "react-native-actions-sheet";
 import BackButton from "@/components/ui/BackButton";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setWorkoutID } from "@/store/slices/workoutSlice";
+import {
+  addWorkoutData,
+  deleteWorkoutData,
+  modifyWorkoutData,
+  setWorkoutID,
+} from "@/store/slices/workoutSlice";
 
 import { router } from "expo-router";
+import FloatingAddButton from "@/components/ui/FloatingAddButton";
 export default function WorkoutListing() {
   const planID = useSelector((state) => state.workout.planID);
   const planData = useSelector((state) => state.workout.data[planID]);
@@ -31,6 +37,18 @@ export default function WorkoutListing() {
   const goToWorkout = (id) => {
     dispatch(setWorkoutID(id));
     router.push("/workout");
+  };
+  const addWorkout = (name, description) => {
+    const workoutObj = { name: name, description: description, exercises: [] };
+    dispatch(addWorkoutData({ workoutObj }));
+  };
+  const modifyWorkout = (workoutIndex, workoutObj) => {
+    dispatch(
+      modifyWorkoutData({ workoutID: workoutIndex, workoutObj: workoutObj })
+    );
+  };
+  const deleteWorkout = (workoutIndex) => {
+    dispatch(deleteWorkoutData({ workoutID: workoutIndex }));
   };
   return (
     <SafeAreaView
@@ -53,18 +71,15 @@ export default function WorkoutListing() {
               data={workout}
               workoutIndex={index}
               goToWorkout={goToWorkout}
+              modifyWorkout={modifyWorkout}
+              deleteWorkout={deleteWorkout}
             />
           ))}
         </View>
       </ScrollView>
 
-      <Pressable
-        className="bg-blue-500 w-auto absolute bottom-20 right-10 p-2 rounded-full"
-        onPress={openAddWorkoutModal}
-      >
-        <Ionicons name="add" size={40} color="#f2f2f2" />
-      </Pressable>
-      <AddWorkoutModal ref={addWorkoutModalRef} />
+      <FloatingAddButton onPress={openAddWorkoutModal} />
+      <AddWorkoutModal ref={addWorkoutModalRef} addWorkout={addWorkout} />
     </SafeAreaView>
   );
 }
