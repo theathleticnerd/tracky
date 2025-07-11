@@ -59,7 +59,7 @@ export default function PlanListing() {
               data={plan}
               planIndex={index}
               modifyPlan={modifyPlan}
-              onPress={selectPlan}
+              onPress={() => selectPlan(index)}
               deletePlan={deletePlan}
             />
           ))}
