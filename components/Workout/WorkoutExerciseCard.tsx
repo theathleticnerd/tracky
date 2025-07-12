@@ -28,8 +28,8 @@ export default function WorkoutExerciseCard(props) {
     <View className="bg-neutral-900 py-6 mb-12 px-4 rounded-lg w-full relative">
       <View className="flex-row justify-between mb-8 items-start">
         <View className="flex-1">
-          <Text className="text-white text-2xl">{name}</Text>
-          <Text className="text-white mt-1 text-lg">{description}</Text>
+          <Text className="text-primary text-2xl">{name}</Text>
+          <Text className="text-primary mt-1 text-lg">{description}</Text>
         </View>
         <Pressable className="" onPress={openExerciseModal}>
           <Ionicons name="ellipsis-vertical" size={24} color="#f2f2f2" />
@@ -75,7 +75,7 @@ export default function WorkoutExerciseCard(props) {
         </View>
       ) : (
         <View className="min-h-40 justify-center items-center">
-          <Text className="text-3xl font-bold text-neutral-200 text-center mb-2">
+          <Text className="text-3xl font-bold text-primary text-center mb-2">
             No Sets Added
           </Text>
           <Text className="text-center text-neutral-400 text-lg">
@@ -85,7 +85,7 @@ export default function WorkoutExerciseCard(props) {
       )}
 
       <View
-        className="absolute left-4 bottom-0 bg-neutral-900 p-1 rounded-full"
+        className="absolute left-4 bottom-0 bg-neutral-900 rounded-full"
         style={[
           {
             transform: [{ translateX: 0 }, { translateY: "50%" }],

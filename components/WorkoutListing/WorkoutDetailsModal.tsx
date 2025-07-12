@@ -53,12 +53,14 @@ export default function WorkoutDetailsModal({ ref, ...props }) {
   return (
     <ActionSheet ref={ref}>
       <View className="px-6 pt-10 pb-20 bg-neutral-800">
-        <Text className="text-white text-3xl font-semibold mb-4">
+        <Text className="text-primary text-3xl font-semibold mb-4">
           {data.name}
         </Text>
         <View className="gap-3 mb-12">
           <View>
-            <Text className="text-white text-lg font-semibold mb-2">Name:</Text>
+            <Text className="text-primary text-lg font-semibold mb-2">
+              Name:
+            </Text>
             <TextInput
               value={workoutName}
               className="bg-white pl-2 rounded-lg h-16 text-xl font-medium"
@@ -75,7 +77,7 @@ export default function WorkoutDetailsModal({ ref, ...props }) {
           </View>
 
           <View>
-            <Text className="text-white text-lg font-semibold mb-2">
+            <Text className="text-primary text-lg font-semibold mb-2">
               Description:
             </Text>
             <TextInput
@@ -101,7 +103,9 @@ export default function WorkoutDetailsModal({ ref, ...props }) {
           className="rounded-lg py-3.5 mt-12 bg-blue-600"
           onPress={changeWorkout}
         >
-          <Text className="text-white text-center text-xl font-bold">Save</Text>
+          <Text className="text-primary text-center text-xl font-bold">
+            Save
+          </Text>
         </TouchableOpacity>
       </View>
     </ActionSheet>

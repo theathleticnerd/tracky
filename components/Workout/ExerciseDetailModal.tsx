@@ -49,9 +49,9 @@ export default function WorkoutExerciseModal({ ref, ...props }) {
       <View className="bg-neutral-800">
         <View className="px-6 pt-12 pb-20">
           <View className="gap-8">
-            <Text className="text-4xl text-white font-bold">{name}</Text>
+            <Text className="text-4xl text-primary font-bold">{name}</Text>
             <View>
-              <Text className="text-white text-lg font-semibold mb-2">
+              <Text className="text-primary text-lg font-semibold mb-2">
                 Exercise Name:
               </Text>
               <TextInput
@@ -69,7 +69,7 @@ export default function WorkoutExerciseModal({ ref, ...props }) {
               )}
             </View>
             <View>
-              <Text className="text-white text-lg font-semibold mb-1">
+              <Text className="text-primary text-lg font-semibold mb-1">
                 Description:
               </Text>
               <TextInput
@@ -100,7 +100,7 @@ export default function WorkoutExerciseModal({ ref, ...props }) {
               className="rounded-lg py-3.5 mt-12 bg-blue-600"
               onPress={modifyExercise}
             >
-              <Text className="text-white text-center text-xl font-bold">
+              <Text className="text-primary text-center text-xl font-bold">
                 Save
               </Text>
             </Pressable>

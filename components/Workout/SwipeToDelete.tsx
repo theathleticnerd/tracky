@@ -112,7 +112,7 @@ export const SwipeToDeleteItem = ({
           <Ionicons name="trash" size={20} color="#f2f2f2" className="mr-2" />
           <Text
             // style={[styles.deleteText, { color: textColor }]}
-            className="text-white text-lg font-semibold"
+            className="text-primary text-lg font-semibold"
           >
             {deleteText}
           </Text>

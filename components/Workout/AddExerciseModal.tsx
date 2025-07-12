@@ -39,12 +39,12 @@ export default function AddExerciseModal({ ref, ...props }) {
   return (
     <ActionSheet ref={ref}>
       <View className="px-6 pt-12 pb-20 bg-neutral-800">
-        <Text className="text-white text-3xl font-semibold mb-6">
+        <Text className="text-primary text-3xl font-semibold mb-6">
           Add Exercise
         </Text>
         <View className="gap-8">
           <View>
-            <Text className="text-white text-lg font-semibold mb-2">
+            <Text className="text-primary text-lg font-semibold mb-2">
               Exercise Name:
             </Text>
             <TextInput
@@ -63,7 +63,7 @@ export default function AddExerciseModal({ ref, ...props }) {
           </View>
 
           <View>
-            <Text className="text-white text-lg font-semibold mb-2">
+            <Text className="text-primary text-lg font-semibold mb-2">
               Description:
             </Text>
             <TextInput
@@ -80,7 +80,7 @@ export default function AddExerciseModal({ ref, ...props }) {
           className="rounded-lg py-3.5 mt-12 bg-blue-600"
           onPress={createExercise}
         >
-          <Text className="text-white text-center text-xl font-bold">
+          <Text className="text-primary text-center text-xl font-bold">
             Create Exercise
           </Text>
         </TouchableOpacity>

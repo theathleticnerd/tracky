@@ -15,7 +15,7 @@ export default function Snackbar(props) {
         className="mr-4"
       />
       {/* <Ionicons  size={24} color="black" /> */}
-      <Text className="font-bold text-white text-lg flex-1">
+      <Text className="font-bold text-primary text-lg flex-1">
         {message || "An error occurred."}
       </Text>
     </View>

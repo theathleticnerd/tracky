@@ -36,12 +36,12 @@ export default function AddPlanModal({ ref, ...props }) {
   return (
     <ActionSheet ref={ref}>
       <View className="px-6 pt-12 pb-20 bg-neutral-800">
-        <Text className="text-white text-3xl font-semibold mb-6">
+        <Text className="text-primary text-3xl font-semibold mb-6">
           Create a new plan
         </Text>
 
         <View>
-          <Text className="text-white text-lg font-semibold mb-2">Name:</Text>
+          <Text className="text-primary text-lg font-semibold mb-2">Name:</Text>
           <TextInput
             value={planName}
             className="bg-white pl-2 rounded-lg h-16 text-xl font-medium"
@@ -60,7 +60,7 @@ export default function AddPlanModal({ ref, ...props }) {
           className="rounded-lg py-3.5 mt-12 bg-blue-600"
           onPress={createPlan}
         >
-          <Text className="text-white text-center text-xl font-bold">
+          <Text className="text-primary text-center text-xl font-bold">
             Create Workout
           </Text>
         </Pressable>

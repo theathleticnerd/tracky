@@ -42,11 +42,11 @@ export default function PlanDetailsModal(props) {
   return (
     <ActionSheet ref={ref}>
       <View className="px-6 pt-10 pb-20 bg-neutral-800">
-        <Text className="text-white text-3xl font-semibold mb-4">
+        <Text className="text-primary text-3xl font-semibold mb-4">
           {data.name}
         </Text>
         <View>
-          <Text className="text-white text-lg font-semibold mb-2">Name:</Text>
+          <Text className="text-primary text-lg font-semibold mb-2">Name:</Text>
           <TextInput
             value={planName}
             className="bg-white pl-2 rounded-lg h-16 text-xl font-medium"
@@ -72,7 +72,7 @@ export default function PlanDetailsModal(props) {
         </TouchableOpacity>
         <TouchableOpacity className="mt-24 rounded-lg py-3.5 bg-blue-600">
           <Text
-            className="text-white text-center text-xl font-bold"
+            className="text-primary text-center text-xl font-bold"
             onPress={changePlan}
           >
             Save Changes

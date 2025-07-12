@@ -131,7 +131,7 @@ export default function Workout() {
       <ScrollView className="pt-4">
         <View className="mt-5 mb-10 flex-row gap-4 items-center">
           <BackButton />
-          <Text className="text-white text-4xl font-medium">
+          <Text className="text-primary text-4xl font-medium">
             {workoutData.name}
           </Text>
         </View>

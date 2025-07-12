@@ -45,11 +45,13 @@ export default function PlanListing() {
       className="flex-1 px-5 min-w-full relative"
     >
       <ScrollView className="pt-4 px-2">
-        <Text className="mt-5 mb-12 text-white text-5xl font-medium">
+        <Text className="mt-5 mb-12 text-primary text-5xl font-medium">
           Welcome
         </Text>
         <View className="mb-8 flex-row gap-4 items-center">
-          <Text className="text-white text-4xl font-medium">Select a Plan</Text>
+          <Text className="text-primary text-4xl font-medium">
+            Select a Plan
+          </Text>
         </View>
         <View className="gap-8 mb-20">
           {planData.map((plan, index) => (

@@ -60,7 +60,7 @@ export default function WorkoutListing() {
       <ScrollView className="pt-4 px-2 ">
         <View className="mt-5 mb-10 flex-row gap-4 items-center">
           <BackButton />
-          <Text className="text-white text-4xl font-medium">
+          <Text className="text-primary text-4xl font-medium">
             {planData.name}
           </Text>
         </View>
